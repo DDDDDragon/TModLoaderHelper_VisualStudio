@@ -6,7 +6,7 @@
   * 内置的中文版ArmorHelper
   * 内置的XNBCompiler
   * 生成基础代码(目前只有物品)
-  * 便捷复制github上的C#代码到本地(复制后可在Mod目录中的)
+  * 便捷复制github上的C#代码到本地(复制后可在Mod目录中的PageSource.cs中找到)
   
 # 后续计划
    * 增添基础代码
