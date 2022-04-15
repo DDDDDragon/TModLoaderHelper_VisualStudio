@@ -28,14 +28,24 @@ namespace TModLoaderHelper
     public partial class ModHelper : Form
     {
         ChromiumWebBrowser browser;
+        
         public void InitBrowser()
         {
             CefSettings settings = new CefSettings();
+            settings.CefCommandLineArgs.Add("proxy-server", "127.0.0.1:10809");
             string url = "https://github.com/search?q=tModLoader&type=";
             if(!Cef.IsInitialized) Cef.Initialize(settings);
             browser = new ChromiumWebBrowser(url);
             browser.FrameLoadEnd += ChromiumContainer_FrameLoadEnd;
             this.Controls.Add(browser);
+            if(Environment.Is64BitOperatingSystem)
+            {
+                string path = System.Environment.CurrentDirectory + "\\V2Ray_64";
+                MessageBox.Show(path);
+            }
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+            registryKey.SetValue("ProxyEnable", 1);
+            registryKey.SetValue("ProxyServer", "127.0.0.1:10809");
             browser.Dock = DockStyle.Fill;
             browser.Show();
         }
@@ -46,6 +56,16 @@ namespace TModLoaderHelper
             InitBrowser();
         }
         public string PageSource = "";
+        private void ChromiumContainer_FrameLoadStart(object sender, FrameLoadEndEventArgs e)
+        {
+            if(!OpenProxyForever)
+            {
+                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                registryKey.SetValue("ProxyEnable", 1);
+                registryKey.SetValue("ProxyServer", "127.0.0.1:10809");
+            }
+            
+        }
         private void ChromiumContainer_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
             var task = e.Frame.GetSourceAsync();
@@ -56,6 +76,12 @@ namespace TModLoaderHelper
                     PageSource = t.Result;
                 }
             });
+            if(!OpenProxyForever)
+            {
+                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                registryKey.SetValue("ProxyEnable", 0);
+            }
+            
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -142,8 +168,8 @@ namespace TModLoaderHelper
 
         private void 在tModLoader中搜索ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = "https://github.com/tModLoader/tModLoader/search?q=" + toolStripTextBox1.Text + "&type=";
-            browser.LoadUrl(url);
+            //string url = "https://github.com/tModLoader/tModLoader/search?q=" + toolStripTextBox1.Text + "&type=";
+            browser.LoadUrl("https://www.baidu.com");
         }
 
         private void 复制此页面代码ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,5 +232,38 @@ namespace TModLoaderHelper
             Form2 form2 = new Form2();
             form2.Show();
         }
+        async private void SetProxy(ChromiumWebBrowser cwb, string Address)
+        {
+            await Cef.UIThreadTaskFactory.StartNew(delegate
+            {
+                var rc = cwb.GetBrowser().GetHost().RequestContext;
+                var v = new Dictionary<string, string>();
+                v["mode"] = "fixed_servers";
+                v["server"] = Address;
+                string error;
+                bool success = rc.SetPreference("proxy", v, out error);
+            });
+        }
+
+        private void ModHelper_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+            registryKey.SetValue("ProxyEnable", 0);
+        }
+
+        private void 始终启用魔法尽量关上吧用的是我的流量TATToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenProxyForever = !OpenProxyForever;
+            if (OpenProxyForever)
+            {
+                toolStripTextBox2.Text = "启用";
+                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                registryKey.SetValue("ProxyEnable", 1);
+                registryKey.SetValue("ProxyServer", "127.0.0.1:10809");
+            }
+            else toolStripTextBox2.Text = "关闭";
+
+        }
+        bool OpenProxyForever = false;
     }
 }

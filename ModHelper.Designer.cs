@@ -29,6 +29,8 @@ namespace TModLoaderHelper
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModHelper));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +42,9 @@ namespace TModLoaderHelper
             this.嵌入式应用ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.armorHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xNBCompilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.始终启用魔法ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,12 +58,11 @@ namespace TModLoaderHelper
             this.搜索ToolStripMenuItem,
             this.toolStripTextBox1,
             this.复制此页面代码ToolStripMenuItem,
-            this.嵌入式应用ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.嵌入式应用ToolStripMenuItem,
+            this.始终启用魔法ToolStripMenuItem,
+            this.toolStripTextBox2});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 31);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // 功能ToolStripMenuItem
             // 
@@ -67,14 +71,12 @@ namespace TModLoaderHelper
             this.生成ToolStripMenuItem});
             this.功能ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
-            this.功能ToolStripMenuItem.Size = new System.Drawing.Size(53, 27);
-            this.功能ToolStripMenuItem.Text = "功能";
+            resources.ApplyResources(this.功能ToolStripMenuItem, "功能ToolStripMenuItem");
             // 
             // 生成ToolStripMenuItem
             // 
             this.生成ToolStripMenuItem.Name = "生成ToolStripMenuItem";
-            this.生成ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.生成ToolStripMenuItem.Text = "生成基础物品";
+            resources.ApplyResources(this.生成ToolStripMenuItem, "生成ToolStripMenuItem");
             this.生成ToolStripMenuItem.Click += new System.EventHandler(this.ItemToolStripMenuItem_Click);
             // 
             // 搜索ToolStripMenuItem
@@ -87,31 +89,27 @@ namespace TModLoaderHelper
             this.搜索ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.搜索ToolStripMenuItem.Name = "搜索ToolStripMenuItem";
             this.搜索ToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 5, 0);
-            this.搜索ToolStripMenuItem.Size = new System.Drawing.Size(58, 27);
-            this.搜索ToolStripMenuItem.Text = "搜索";
+            resources.ApplyResources(this.搜索ToolStripMenuItem, "搜索ToolStripMenuItem");
             // 
             // zaToolStripMenuItem
             // 
             this.zaToolStripMenuItem.Name = "zaToolStripMenuItem";
-            this.zaToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
-            this.zaToolStripMenuItem.Text = "在Github中搜索";
+            resources.ApplyResources(this.zaToolStripMenuItem, "zaToolStripMenuItem");
             this.zaToolStripMenuItem.Click += new System.EventHandler(this.zaToolStripMenuItem_Click);
             // 
             // 在tModLoader中搜索ToolStripMenuItem
             // 
             this.在tModLoader中搜索ToolStripMenuItem.Name = "在tModLoader中搜索ToolStripMenuItem";
-            this.在tModLoader中搜索ToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
-            this.在tModLoader中搜索ToolStripMenuItem.Text = "在tModLoader中搜索";
+            resources.ApplyResources(this.在tModLoader中搜索ToolStripMenuItem, "在tModLoader中搜索ToolStripMenuItem");
             this.在tModLoader中搜索ToolStripMenuItem.Click += new System.EventHandler(this.在tModLoader中搜索ToolStripMenuItem_Click);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.toolStripTextBox1.Size = new System.Drawing.Size(75, 27);
             this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             // 
             // 复制此页面代码ToolStripMenuItem
@@ -120,8 +118,7 @@ namespace TModLoaderHelper
             this.复制此页面代码ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.复制此页面代码ToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.复制此页面代码ToolStripMenuItem.Name = "复制此页面代码ToolStripMenuItem";
-            this.复制此页面代码ToolStripMenuItem.Size = new System.Drawing.Size(128, 27);
-            this.复制此页面代码ToolStripMenuItem.Text = "复制此页面代码";
+            resources.ApplyResources(this.复制此页面代码ToolStripMenuItem, "复制此页面代码ToolStripMenuItem");
             this.复制此页面代码ToolStripMenuItem.Click += new System.EventHandler(this.复制此页面代码ToolStripMenuItem_Click);
             // 
             // 嵌入式应用ToolStripMenuItem
@@ -133,32 +130,45 @@ namespace TModLoaderHelper
             this.嵌入式应用ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.嵌入式应用ToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.嵌入式应用ToolStripMenuItem.Name = "嵌入式应用ToolStripMenuItem";
-            this.嵌入式应用ToolStripMenuItem.Size = new System.Drawing.Size(83, 27);
-            this.嵌入式应用ToolStripMenuItem.Text = "内嵌应用";
+            resources.ApplyResources(this.嵌入式应用ToolStripMenuItem, "嵌入式应用ToolStripMenuItem");
             // 
             // armorHelperToolStripMenuItem
             // 
             this.armorHelperToolStripMenuItem.Name = "armorHelperToolStripMenuItem";
-            this.armorHelperToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.armorHelperToolStripMenuItem.Text = "ArmorHelper";
+            resources.ApplyResources(this.armorHelperToolStripMenuItem, "armorHelperToolStripMenuItem");
             this.armorHelperToolStripMenuItem.Click += new System.EventHandler(this.armorHelperToolStripMenuItem_Click);
             // 
             // xNBCompilerToolStripMenuItem
             // 
             this.xNBCompilerToolStripMenuItem.Name = "xNBCompilerToolStripMenuItem";
-            this.xNBCompilerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.xNBCompilerToolStripMenuItem.Text = "XNBCompiler";
+            resources.ApplyResources(this.xNBCompilerToolStripMenuItem, "xNBCompilerToolStripMenuItem");
             this.xNBCompilerToolStripMenuItem.Click += new System.EventHandler(this.xNBCompilerToolStripMenuItem_Click);
+            // 
+            // 始终启用魔法ToolStripMenuItem
+            // 
+            this.始终启用魔法ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(79)))), ((int)(((byte)(129)))));
+            this.始终启用魔法ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.始终启用魔法ToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.始终启用魔法ToolStripMenuItem.Name = "始终启用魔法ToolStripMenuItem";
+            resources.ApplyResources(this.始终启用魔法ToolStripMenuItem, "始终启用魔法ToolStripMenuItem");
+            this.始终启用魔法ToolStripMenuItem.Click += new System.EventHandler(this.始终启用魔法尽量关上吧用的是我的流量TATToolStripMenuItem_Click);
+            this.始终启用魔法ToolStripMenuItem.MouseEnter += new System.EventHandler(this.始终启用魔法ToolStripMenuItem_MouseEnter);
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.toolStripTextBox2, "toolStripTextBox2");
+            this.toolStripTextBox2.Margin = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
             // 
             // ModHelper
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ModHelper";
-            this.Text = "ModHelper";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModHelper_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -178,5 +188,8 @@ namespace TModLoaderHelper
         private System.Windows.Forms.ToolStripMenuItem 嵌入式应用ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem armorHelperToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xNBCompilerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 始终启用魔法ToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
     }
 }
