@@ -15,4 +15,6 @@
 
 # 注意事项
   安装插件后在VS上方导航栏-扩展-菜单-TModHelper中打开插件主页面
+  始终启用魔法功能能别开就别开，毕竟用的是作者个人的流量TAT
+  有bug在fs49.org的群里找 此乃人 修，但是不一定在线
 TModLoaderHelper for VisualStudio
